@@ -10,7 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-FROM FROM_IMAGE_NAME=spartan10:5443/pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+FROM spartan10:5443/pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
 
 RUN pip install --index-url https://download.pytorch.org/whl/nightly/cu118 --pre 'torch>=2.1.0dev'
 RUN MAX_JOBS=4 pip install 'flash-attn>=2.0.0.post1' --no-build-isolation
