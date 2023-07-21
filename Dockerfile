@@ -10,10 +10,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-FROM spartan10:5443/pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+# FROM spartan10:5443/pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+FROM nvcr.io/nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
 RUN apt update -y && apt install -y git
-RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/nightly/cu118 --pre 'torch>=2.1.0dev'
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/nightly/cu118 --pre 'torch>=2.1.0dev' torchvision torchaudio
 RUN MAX_JOBS=4 pip install --no-cache-dir 'flash-attn>=2.0.0.post1' --no-build-isolation
 RUN pip install --no-cache-dir huggingface_hub
 RUN pip install --no-cache-dir sentencepiece
