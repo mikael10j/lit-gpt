@@ -12,13 +12,13 @@
 # limitations under the License.
 FROM spartan10:5443/pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
 
-RUN pip install --index-url https://download.pytorch.org/whl/nightly/cu118 --pre 'torch>=2.1.0dev'
-RUN MAX_JOBS=4 pip install 'flash-attn>=2.0.0.post1' --no-build-isolation
-RUN pip install huggingface_hub
-RUN pip install sentencepiece
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/nightly/cu118 --pre 'torch>=2.1.0dev'
+RUN MAX_JOBS=4 pip install --no-cache-dir 'flash-attn>=2.0.0.post1' --no-build-isolation
+RUN pip install --no-cache-dir huggingface_hub
+RUN pip install --no-cache-dir sentencepiece
                 
 
 WORKDIR /workspace
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
